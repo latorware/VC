@@ -1,3 +1,7 @@
+clear
+clc
+close all
+
 %% apartat A
 A_vector1 = [5 4 3 2 1];
 A_vector2 = [1; 1; 1];
