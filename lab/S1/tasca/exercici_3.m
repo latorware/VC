@@ -7,3 +7,4 @@ z(z<0) = 0;
 %pintem el plot
 surf(x,y,z);
 colormap hot;
+A
