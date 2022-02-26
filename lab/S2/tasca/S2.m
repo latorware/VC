@@ -69,12 +69,14 @@ figure
 imshow(imglognatural); 
 
 [H,S,L] = convertToHSL(imglognatural);
-%multipliquem saturació per: 1.2
-S = S.*1.2; 
+%multipliquem saturació per: 1.65
+S = S.*1.65; 
 imglognatural = convertFromHSL(H,S,L);
+figure
+imshow(imglognatural); 
 
 
-
+%% FER AQUI EL FILTRE SOROLL
 
 figure
 montage({A, imglognatural}); 
