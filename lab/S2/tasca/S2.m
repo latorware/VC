@@ -12,3 +12,12 @@ DIF = abs(A-B); % imatge diferencia
 maxim = max(DIF(:));
 DIF = DIF/maxim; % dividim pel seu valor màxim
 imshow(DIF);
+
+
+%% 3
+Bd = imtranslate(B,[20, -20]);
+DIF = abs(A-Bd);
+maxim = max(DIF(:));
+DIF = DIF/maxim;
+imshow(DIF);
+
