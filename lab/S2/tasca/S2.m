@@ -40,6 +40,7 @@ figure
 imglognatural = convertFromHSL(H,S,Lnatural);
 imshow(imglognatural); 
 
+%% NO VALID
 % Logaritme base 2
 Lb2 = L.*(1-log2(L)); 
 Lb2 = rescale(Lb2, 0, max(Lb2(:))); 
