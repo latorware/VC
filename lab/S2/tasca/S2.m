@@ -32,23 +32,26 @@ plot(hist1);
 [H,S,L] = convertToHSL(Ac);
 
 figure
-imshow(L); 
+imshow(Ac); 
 
 % Logaritme natural
 Lnatural = L.*(1-log(L)); 
 figure
-imshow(Lnatural); 
+imglognatural = convertFromHSL(H,S,Lnatural);
+imshow(imglognatural); 
 
 % Logaritme base 2
 Lb2 = L.*(1-log2(L)); 
 Lb2 = rescale(Lb2, 0, max(Lb2(:))); 
 figure
-imshow(Lb2); 
+imglogb2 = convertFromHSL(H,S,Lb2);
+imshow(imglogb2); 
 
 % Logaritme base 10
 Lb10 = L.*(1-log10(L)); 
 figure
-imshow(Lb10); 
+imglogb10 = convertFromHSL(H,S,Lb10);
+imshow(imglogb10); 
 
 
 
