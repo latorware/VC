@@ -32,10 +32,20 @@ plot(hist1);
 [H,S,L] = convertToHSL(Ac);
 
 figure
-
+imshow(L); 
 
 % Logaritme natural
-Lnatural = 
+Lnatural = 1-log(L); 
+imshow(Lnatural); 
+
+% Logaritme base 2
+Lb2 = 1-log2(L); 
+imshow(Lb2); 
+
+% Logaritme base 10
+Lb10 = 1-log10(L); 
+imshow(Lb10); 
+
 
 
 figure
