@@ -29,6 +29,8 @@ hist1 = imhist(Ac);
 figure
 plot(hist1); 
 
+[H,S,L] = convertToHSL(Ac);
+
 
 figure
 montage({A, Ac}); 
