@@ -35,17 +35,18 @@ figure
 imshow(L); 
 
 % Logaritme natural
-Lnatural = 1-log(L); 
+Lnatural = L.*(1-log(L)); 
 figure
 imshow(Lnatural); 
 
 % Logaritme base 2
-Lb2 = 1-log2(L); 
+Lb2 = L.*(1-log2(L)); 
+Lb2 = rescale(0, max(Lb2(:))); 
 figure
 imshow(Lb2); 
 
 % Logaritme base 10
-Lb10 = 1-log10(L); 
+Lb10 = L.*(1-log10(L)); 
 figure
 imshow(Lb10); 
 
