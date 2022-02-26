@@ -31,12 +31,6 @@ plot(hist1);
 
 [H,S,L] = convertToHSL(Ac);
 
-figure
-
-
-% Logaritme natural
-Lnatural = 
-
 
 figure
 montage({A, Ac}); 
