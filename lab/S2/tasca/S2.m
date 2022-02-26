@@ -42,11 +42,11 @@ imshow(imglognatural);
 
 %% NO VALID
 % Logaritme base 2
-Lb2 = L.*(1-log2(L)); 
-Lb2 = rescale(Lb2, 0, max(Lb2(:))); 
-figure
-imglogb2 = convertFromHSL(H,S,Lb2);
-imshow(imglogb2); 
+%Lb2 = L.*(1-log2(L)); 
+%Lb2 = rescale(Lb2, 0, max(Lb2(:))); 
+%figure
+%imglogb2 = convertFromHSL(H,S,Lb2);
+%imshow(imglogb2); 
 
 % Logaritme base 10
 Lb10 = L.*(1-log10(L)); 
