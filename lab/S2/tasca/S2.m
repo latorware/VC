@@ -56,6 +56,9 @@ Lb10 = rescale(Lb10, 0, 1);
 imglogb10 = convertFromHSL(H,S,Lb10);
 imshow(imglogb10); 
 
+figure
+montage({A, imglognatural, imglogb10});
+
 % seguim amb logaritme natural
 histlognatural = imhist(imglognatural); 
 figure
@@ -65,6 +68,13 @@ imglognatural = imadjust(imglognatural, [0.098, 1]);
 figure
 imshow(imglognatural); 
 
+[H,S,L] = convertToHSL(imglognatural);
+%multipliquem saturació per: 1.2
+S = S.*1.2; 
+imglognatural = convertFromHSL(H,S,L);
+
+
+
 
 figure
-montage({A, imglognatural, imglogb10}); 
+montage({A, imglognatural}); 
