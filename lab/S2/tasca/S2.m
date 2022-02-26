@@ -25,5 +25,10 @@ imshow(DIF);
 %% 4
 Am = (A+Bd)/2; % imatge sumatori amb més senyal que A i B
 Ac = Am; 
+hist1 = imhist(Ac);
+figure
+plot(hist1); 
+
+
 figure
 montage({A, Ac}); 
