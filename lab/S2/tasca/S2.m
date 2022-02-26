@@ -19,5 +19,11 @@ Bd = imtranslate(B,[20, -20]);
 DIF = abs(A-Bd);
 maxim = max(DIF(:));
 DIF = DIF/maxim;
+figure
 imshow(DIF);
 
+%% 4
+Am = (A+Bd)/2; % imatge sumatori amb més senyal que A i B
+Ac = Am; 
+figure
+montage({A, Ac}); 
