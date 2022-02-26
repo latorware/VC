@@ -56,6 +56,14 @@ Lb10 = rescale(Lb10, 0, 1);
 imglogb10 = convertFromHSL(H,S,Lb10);
 imshow(imglogb10); 
 
+% seguim amb logaritme natural
+histlognatural = imhist(imglognatural); 
+figure
+plot(histlognatural); 
+% 25/255 = 0.098 (aprox)
+imglognatural = imadjust(imglognatural, [0.098, 1]); 
+figure
+imshow(imglognatural); 
 
 
 figure

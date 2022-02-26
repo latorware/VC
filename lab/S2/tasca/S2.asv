@@ -37,23 +37,28 @@ imshow(Ac);
 % Logaritme natural
 Lnatural = L.*(1-log(L)); 
 figure
+Lnatural = rescale(Lnatural, 0, 1); 
 imglognatural = convertFromHSL(H,S,Lnatural);
 imshow(imglognatural); 
 
+%% NO VALID
 % Logaritme base 2
-Lb2 = L.*(1-log2(L)); 
-Lb2 = rescale(Lb2, 0, max(Lb2(:))); 
-figure
-imglogb2 = convertFromHSL(H,S,Lb2);
-imshow(imglogb2); 
+%Lb2 = L.*(1-log2(L)); 
+%Lb2 = rescale(Lb2, 0, max(Lb2(:))); 
+%figure
+%imglogb2 = convertFromHSL(H,S,Lb2);
+%imshow(imglogb2); 
 
 % Logaritme base 10
 Lb10 = L.*(1-log10(L)); 
 figure
+Lb10 = rescale(Lb10, 0, 1); 
 imglogb10 = convertFromHSL(H,S,Lb10);
 imshow(imglogb10); 
+
+histlog
 
 
 
 figure
-montage({A, Ac}); 
+montage({A, imglognatural, imglogb10}); 
