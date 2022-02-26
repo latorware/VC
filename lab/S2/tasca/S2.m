@@ -37,6 +37,7 @@ imshow(Ac);
 % Logaritme natural
 Lnatural = L.*(1-log(L)); 
 figure
+Lnatural = rescale(Lnatural, 0, 1); 
 imglognatural = convertFromHSL(H,S,Lnatural);
 imshow(imglognatural); 
 
@@ -51,10 +52,11 @@ imshow(imglognatural);
 % Logaritme base 10
 Lb10 = L.*(1-log10(L)); 
 figure
+Lb10 = rescale(Lb10, 0, 1); 
 imglogb10 = convertFromHSL(H,S,Lb10);
 imshow(imglogb10); 
 
 
 
 figure
-montage({A, Ac}); 
+montage({A, imglognatural, imglogb10}); 
