@@ -36,14 +36,17 @@ imshow(L);
 
 % Logaritme natural
 Lnatural = 1-log(L); 
+figure
 imshow(Lnatural); 
 
 % Logaritme base 2
 Lb2 = 1-log2(L); 
+figure
 imshow(Lb2); 
 
 % Logaritme base 10
 Lb10 = 1-log10(L); 
+figure
 imshow(Lb10); 
 
 
