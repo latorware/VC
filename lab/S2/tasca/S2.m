@@ -32,8 +32,8 @@ plot(hist1);
 [H,S,L] = convertToHSL(Ac);
 
 figure
-imshow(Ac); 
-
+%imshow(Ac); 
+%%
 % Logaritme natural
 Lnatural = L.*(1-log(L)); 
 figure
@@ -76,7 +76,25 @@ figure
 imshow(imglognatural); 
 
 
-%% FER AQUI EL FILTRE SOROLL
 
+%% filtre mitjana(descartat)
+%f = [1/16 1/8, 1/16; 1/8 1/4 1/8; 1/16 1/8 1/16];
+%mitjana = imfilter(imglognatural, f, 'conv');
+%figure
+%imshow(mitjana);
+
+%% filtre gaussià
+gauss = imgaussfilt3(imglognatural,2);
 figure
-montage({A, imglognatural}); 
+imshow(gauss);
+
+%% filtre mediana (descartat)
+%mediana = medfilt3(imglognatural);
+%imshow(mediana);
+
+%% comparació filtres
+%figure
+%montage({imglognatural, mitjana, gauss, mediana}); 
+
+%% Resultat final (comparativa)
+montage({A, B, gauss}); 
