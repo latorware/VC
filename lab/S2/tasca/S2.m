@@ -79,22 +79,26 @@ imshow(imglognatural);
 
 %% filtre mitjana(descartat)
 %f = [1/16 1/8, 1/16; 1/8 1/4 1/8; 1/16 1/8 1/16];
-%mitjana = imfilter(imglognatural, f, 'conv');
-%figure
-%imshow(mitjana);
+mitjana = imfilter(imglognatural, ones(9)/81, 'conv');
+figure
+imshow(mitjana);
 
 %% filtre gaussià
-gauss = imgaussfilt3(imglognatural,2);
+gauss = imgaussfilt(imglognatural,2);
 figure
 imshow(gauss);
 
 %% filtre mediana (descartat)
-%mediana = medfilt3(imglognatural);
-%imshow(mediana);
+mediana = imglognatural; 
+for c = 1 : 3
+    mediana(:, :, c) = medfilt2(imglognatural(:, :, c), [8, 8]);
+end 
+figure
+imshow(mediana);
 
 %% comparació filtres
 %figure
 %montage({imglognatural, mitjana, gauss, mediana}); 
 
 %% Resultat final (comparativa)
-montage({A, B, gauss}); 
+%montage({A, B, gauss}); 
