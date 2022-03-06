@@ -1,7 +1,7 @@
-function [M, m] = Metrica(A)
+function [m] = Metrica(A)
 m = 0.0;
 M = zeros(size(A,1),size(A,2));
-llindar = 240;
+llindar = max(max(A))*0.98;
 inici = 1;
 finalx = size(A,1);
 finaly = size(A,2);
