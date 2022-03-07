@@ -1,3 +1,7 @@
+clear
+clc
+close all
+
 %%Exercici 3
 
 %% Càrrega d'imatges
@@ -77,7 +81,7 @@ else
     if m2>max(m1,m3)
         imshow(I2);
     else
-        imsow(I3);
+        imshow(I3);
     end
 end
 
