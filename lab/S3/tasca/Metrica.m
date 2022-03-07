@@ -39,6 +39,19 @@ end
 %% VERSIO 2.0
 m = 0.0; % merit de lenfoc
 M = zeros(size(A,1),size(A,2)); % per comprovar importancia pixels segons distancia
-inici = 1; % per iterar
-finalx = size(A, 1); % per iterar
-finaly = size(A, 2); % per iterar
+finalx = size(A, 2); % total columnes imatge
+finaly = size(A, 1); % total files imatge
+centrex = finalx/2.0; % posicio x centre imatge
+centrey = finaly/2.0; % posicio y centre imatge
+maxDist = sqrt((finalx^2) + (finaly^2))/2.0; % distancia centre imatge als extrems diagonals
+
+for i = 1:finalx % iterem per les columnes de la imatge
+    for j = 1:finaly % iterem pixels per totes les files de la columna actual
+        distActual = sqrt( ((i-centrex)^2) + ((j-centrey)^2) ); % distancia pixel actual respecte el centre
+        M(i,j) = 1 - (distActual/maxDist);% calculem importancia pixel actual
+        %% Pixel central és el que té més importància (valor 1), pixels extrems diagonals
+        %% els que tenen menys (valor 0)
+        
+
+
+
