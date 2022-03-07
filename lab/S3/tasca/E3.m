@@ -21,13 +21,18 @@ S3 = Sobel(I3);
 % S4 = Sobel(I4);
 %montage({I1,S1,I2, S2, I3, S3});
 
-%% Histogrames pel càlcul del llindar
+%% Histogrames de les imatges sobel senceres
 figure
 histogram(S1);
 figure
 histogram(S2);
 figure
 histogram(S3);
+
+%% Histogrames de les imatges sobel (retallades perque nomes hi hagi els pixesl centrals)
+% Subimatges que contenen pixels que estan a una distancia inferior o igual
+% a diagonalImatge/8 respecte el centre de la imatge
+centreImatge = 
 
 %% Càlcul mètrica
 
