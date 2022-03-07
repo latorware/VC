@@ -1,4 +1,6 @@
 function [m] = Metrica(A)
+%% INPUT HA DE SER IMATGE SOBEL
+
 %% VERSIO 1.0
 %{
 m = 0.0;
@@ -52,6 +54,14 @@ for i = 1:finalx % iterem per les columnes de la imatge
         M(i,j) = 1 - (distActual/maxDist);% calculem importancia pixel actual
         %% Pixel central és el que té més importància (valor 1), pixels extrems diagonals
         %% els que tenen menys (valor 0)
+        enf(i,j) = A(i,j)/255; % calculem percenatge (0 a 1) d'enfocament del pixel actual
+        %% Pixel perfectament enfocat és aquell que té valor 255 a sobel
+        %% Pixel que no esta gens enfocat es aquell que té valor 0 a sobel
+        m = m + (M(i,j)* enf(i,j)); % calculem contribucio que fa el pixel actual al merit total d'enfoc
+        % de la imatge
+    end
+end
+end
 
 
 
