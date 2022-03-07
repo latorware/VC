@@ -2,9 +2,9 @@
 
 %% Càrrega d'imatges
 
-I1 = rgb2gray(imread('E3/_61A5845.jpg'));
-I2 = rgb2gray(imread('E3/_61A5855.jpg'));
-I3 = rgb2gray(imread('E3/_61A5861.jpg'));
+I1 = rgb2gray(imread('_61A5845.jpg'));
+I2 = rgb2gray(imread('_61A5855.jpg'));
+I3 = rgb2gray(imread('_61A5861.jpg'));
 
 % figure
 % imshow(I1);
@@ -18,7 +18,7 @@ I3 = rgb2gray(imread('E3/_61A5861.jpg'));
 S1 = Sobel(I1);
 S2 = Sobel(I2);
 S3 = Sobel(I3);
-S4 = Sobel(I4);
+% S4 = Sobel(I4);
 %montage({I1,S1,I2, S2, I3, S3});
 
 %% Histogrames pel càlcul del llindar
@@ -37,6 +37,7 @@ m3 = Metrica(S3);
 
 %% Mostra la imatge amb major mètrica
 
+figure
 if m1>max(m2,m3)
     imshow(I1);
 else
