@@ -1,5 +1,5 @@
-function [m] = Metrica(A)
-%% INPUT HA DE SER IMATGE SOBEL
+function [m, M, enf] = Metrica(A)
+%% INPUT HA DE SER IMATGE SOBEL amb rang 0-255
 
 %% VERSIO 1.0
 %{
@@ -42,8 +42,8 @@ end
 m = 0.0; % merit de lenfoc
 M = zeros(size(A,1),size(A,2)); % per comprovar importancia pixels segons distancia
 enf = zeros(size(A,1), size(A,2)); % per comprovar lenfocament dels pixels
-finalx = size(A, 2); % total columnes imatge
-finaly = size(A, 1); % total files imatge
+finalx = double(size(A, 2)); % total columnes imatge
+finaly = double(size(A, 1)); % total files imatge
 centrex = finalx/2.0; % posicio x centre imatge
 centrey = finaly/2.0; % posicio y centre imatge
 maxDist = sqrt((finalx^2) + (finaly^2))/2.0; % distancia centre imatge als extrems diagonals
@@ -51,17 +51,21 @@ maxDist = sqrt((finalx^2) + (finaly^2))/2.0; % distancia centre imatge als extre
 for i = 1:finalx % iterem per les columnes de la imatge
     for j = 1:finaly % iterem pixels per totes les files de la columna actual
         distActual = sqrt( ((i-centrex)^2) + ((j-centrey)^2) ); % distancia pixel actual respecte el centre
-        M(i,j) = 1 - (distActual/maxDist);% calculem importancia pixel actual
+        M(j,i) = 1 - (distActual/maxDist);% calculem importancia pixel actual
         %% Pixel central és el que té més importància (valor 1), pixels extrems diagonals
         %% els que tenen menys (valor 0)
-        enf(i,j) = A(i,j)/255; % calculem percenatge (0 a 1) d'enfocament del pixel actual
+        enf(j,i) = double(A(j,i))/255; % calculem percenatge (0 a 1) d'enfocament del pixel actual
         %% Pixel perfectament enfocat és aquell que té valor 255 a sobel
         %% Pixel que no esta gens enfocat es aquell que té valor 0 a sobel
-        m = m + (M(i,j)* enf(i,j)); % calculem contribucio que fa el pixel actual al merit total d'enfoc
+        m = m + (M(j,i)* enf(j,i)); % calculem contribucio que fa el pixel actual al merit total d'enfoc
         % de la imatge
     end
 end
 end
+
+
+%% VESIO 2.1 (same as 2.0 pero optimitzada (és a dir, sense matrius M i enf))
+
 
 
 
