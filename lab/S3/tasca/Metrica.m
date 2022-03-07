@@ -1,4 +1,6 @@
 function [m] = Metrica(A)
+%% VERSIO 1.0
+%{
 m = 0.0;
 M = zeros(size(A,1),size(A,2));
 llindar = max(max(A))*0.98;
@@ -32,3 +34,11 @@ while finalx >= inici && finaly >= inici
     finalx = finalx -1;
     finaly = finaly -1;
 end
+%}
+
+%% VERSIO 2.0
+m = 0.0; % merit de lenfoc
+M = zeros(size(A,1),size(A,2)); % per comprovar importancia pixels segons distancia
+inici = 1; % per iterar
+finalx = size(A, 1); % per iterar
+finaly = size(A, 2); % per iterar
