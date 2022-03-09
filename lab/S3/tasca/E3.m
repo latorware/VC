@@ -75,9 +75,9 @@ ylim([0, 5000]);
 
 %% Càlcul mètrica
 
-[m1, M1, enf1] = Metrica(S1);
-[m2, M2, enf2] = Metrica(S2);
-[m3, M3, enf3] = Metrica(S3);
+[m1] = Metrica(S1);
+[m2] = Metrica(S2);
+[m3] = Metrica(S3);
 
 %% gràfica resultats
 x = categorical(["Imatge1", "Imatge2", "Imatge3"]); 
