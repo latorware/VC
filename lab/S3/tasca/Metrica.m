@@ -111,7 +111,7 @@ for i = 1:finalx % iterem per les columnes de la imatge
         %% Pixel central és el que té més importància (valor 1), pixels extrems diagonals
         %% els que tenen menys (valor 0)
         enf(j,i) = double(A(j,i))/255; % calculem percenatge (0 a 1) d'enfocament del pixel actual
-        enf(j,1) = enf(j,i)^10; % adaptem aquest percentatge segons les nostres necessitats
+        enf(j,1) = enf(j,i)^10; % adaptem aquest percentatge segons les nostres necessitats 
         %% Pixel perfectament enfocat és aquell que té valor 255 a sobel
         %% Pixel que no esta gens enfocat es aquell que té valor 0 a sobel
         m = m + (M(j,i)* enf(j,i)); % calculem contribucio que fa el pixel actual al merit total d'enfoc

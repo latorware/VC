@@ -6,9 +6,9 @@ close all
 
 %% Càrrega d'imatges
 %% Comparacio tres imatges que han de tenir les mateixes dimensions
-I1 = rgb2gray(imread('_61A5845.jpg'));
-I2 = rgb2gray(imread('_61A5855.jpg'));
-I3 = rgb2gray(imread('_61A5861.jpg'));
+I1 = rgb2gray(imread('1.tif'));
+I2 = rgb2gray(imread('2.tif'));
+I3 = rgb2gray(imread('3.tif'));
 
 % figure
 % imshow(I1);
@@ -34,10 +34,16 @@ imshow(S3);
 %% Histogrames de les imatges sobel senceres
 figure
 histogram(S1);
+xlim([0,255]); 
+ylim([0, 100000]); 
 figure
 histogram(S2);
+xlim([0,255]); 
+ylim([0, 100000]); 
 figure
 histogram(S3);
+xlim([0,255]); 
+ylim([0, 100000]); 
 
 %% Histogrames de les imatges sobel (retallades perque nomes hi hagi els pixesl centrals)
 % Subimatges que contenen els 10.000 (100x100) pixels més centrals de cada imatge
@@ -51,14 +57,20 @@ figure
 imshow(S1cropped); 
 figure 
 histogram(S1cropped); 
+xlim([0, 255]); 
+ylim([0, 5000]); 
 figure
 imshow(S2cropped); 
 figure
 histogram(S2cropped); 
+xlim([0, 255]); 
+ylim([0, 5000]); 
 figure
 imshow(S3cropped); 
 figure
 histogram(S3cropped); 
+xlim([0, 255]); 
+ylim([0, 5000]); 
 
 
 %% Càlcul mètrica
@@ -70,7 +82,7 @@ histogram(S3cropped);
 %% gràfica resultats
 x = categorical(["Imatge1", "Imatge2", "Imatge3"]); 
 y = [(m1) (m2) (m3)]; 
-plot(x,y); 
+bar(x,y); 
 
 %% Mostra la imatge amb major mètrica
 
