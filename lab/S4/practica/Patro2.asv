@@ -1,3 +1,4 @@
+clc
 clear
 close all
 
@@ -154,39 +155,136 @@ imshow(F)
 
 EE25 = strel('square', 40); 
 F = imclose(F, EE25); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 EE26 = strel('square', 21); 
 F = and(F, not(imopen(F, EE26))); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 EE27 = strel('rectangle', [40, 5]); 
 F = and(F, not(imopen(F, EE27))); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 EE28 = strel('rectangle', [38, 5]); 
 D = imopen(F, EE28); 
-figure
-imshow(D)
+%figure
+%imshow(D)
 
 EE29 = strel('rectangle', [10, 28]); 
 F = imopen(F, EE29); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 F = or(F, D); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 F = imreconstruct(F, BW); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 
 %% els triangles petits
+
+EE31 = strel('disk', 6, 8); 
+W = imopen(BW, EE31); 
+figure
+imshow(W)
+
+EE31 = strel('square', 10); 
+E = imopen(BW, EE31); 
+figure
+imshow(E)
+
+EE31 = strel('diamond', 6); 
+R = imopen(BW, EE31); 
+figure
+imshow(R)
+
+T = or(W, E); 
+T = or(T, R); 
+figure
+imshow(T)
+
+T = and(BW, not(imreconstruct(T, BW))); 
+figure
+imshow(T)
+
+
+EE30 = strel('line', 13, 90); 
+W = imopen(T, EE30); 
+figure
+imshow(T)
+
+EE31 = strel('line', 13, 0); 
+D = imopen(T, EE31); 
+figure
+imshow(D)
+
+
+T = and(D, W); 
+figure
+imshow(T)
+
+EE32 = strel('square', 3); 
+T = imopen(T, EE32); 
+figure
+imshow(T)
+
+EE33 = strel('line', 6, 45); 
+D = imopen(T, EE33); 
+figure
+imshow(D)
+
+T = imreconstruct(T, BW); 
+D = imreconstruct(D, BW); 
+T = and(T, not(D)); 
+figure
+imshow(T)
+
+
+EE34 = strel('square', 50); 
+T = imclose(T, EE34); 
+figure
+imshow(T)
+
+EE35 = strel('square', 10); 
+D = imopen(T, EE35); 
+figure
+imshow(D)
+
+T = imreconstruct(T, BW); 
+D = imreconstruct(D, BW); 
+T = and(T, not(D)); 
+figure
+imshow(T)
+
+EE36 = strel('square', 70); 
+D = imclose(T, EE36); 
+figure
+imshow(D)
+
+EE37 = strel('line', 20, 0);
+D = imopen(D, EE37); 
+figure
+imshow(D)
+
+T = and(T, D); 
+figure
+imshow(T)
+
+T = imreconstruct(T, BW); 
+figure
+imshow(F)
+
+
+
+
+
+
 
 
 

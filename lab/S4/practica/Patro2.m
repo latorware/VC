@@ -1,3 +1,4 @@
+clc
 clear
 close all
 
@@ -18,7 +19,6 @@ imshow(BW);
 %% Patró 2
 
 % Diagonal central
-%{
 EE = strel('diamond', 15); 
 A = imopen(BW, EE); 
 figure
@@ -43,20 +43,9 @@ imshow(A)
         figure
         imshow(A)
         
+        A = imreconstruct(A, BW); 
         figure
-        imshow(imreconstruct(A, BW))
-%}
-% triangles
-
-%{
-for i = 40:90
-    EE5 = strel('line', 15, i); 
-    B = imopen(BW, EE5); 
-    figure
-    imshow(B)
-end
-%}
-
+        imshow(A)
 
 %% Triangles grans
 
@@ -154,115 +143,138 @@ imshow(F)
 
 EE25 = strel('square', 40); 
 F = imclose(F, EE25); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 EE26 = strel('square', 21); 
 F = and(F, not(imopen(F, EE26))); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 EE27 = strel('rectangle', [40, 5]); 
 F = and(F, not(imopen(F, EE27))); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 EE28 = strel('rectangle', [38, 5]); 
 D = imopen(F, EE28); 
-figure
-imshow(D)
+%figure
+%imshow(D)
 
 EE29 = strel('rectangle', [10, 28]); 
 F = imopen(F, EE29); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 F = or(F, D); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 F = imreconstruct(F, BW); 
-figure
-imshow(F)
+%figure
+%imshow(F)
 
 
 %% els triangles petits
 
-EE30 = strel('line', )
-
-
-
-
-
-
-%{
-%% alternativa
-
-
-EE5 = strel('line', 5, 53); 
-B = imopen(BW, EE5); 
-%figure
-%imshow(B)
-
-EE15 = strel('line', 5, 125); 
-D = imopen(BW, EE15); 
-%figure
-%imshow(D)
-
-B = and(B, D); 
+EE31 = strel('disk', 6, 8); 
+W = imopen(BW, EE31); 
 figure
-imshow(B); 
+imshow(W)
 
-EE6 = strel('square', 5); 
-B = imclose(B, EE6); 
-%figure
-%imshow(B)
-
-EE8 = strel('disk', 3, 8); 
-B = imclose(B, EE8); 
-%figure
-%imshow(B)
-
-EE7 = strel('square', 5); 
-B = and(B, not(imopen(B, EE7))); 
-%figure
-%imshow(B); 
-
-EE9 = strel('line', 5, 53); 
-B = imopen(B, EE9); 
+EE31 = strel('square', 10); 
+E = imopen(BW, EE31); 
 figure
-imshow(B);
+imshow(E)
 
-EE16 = strel('line', 5, 125); 
-D = imopen(B, EE16); 
+EE31 = strel('diamond', 6); 
+R = imopen(BW, EE31); 
 figure
-imshow(D);
+imshow(R)
 
-B = and(B, D);
+T = or(W, E); 
+T = or(T, R); 
 figure
-imshow(B)
+imshow(T)
 
-EE10 = strel('square', 26); 
-B = imclose(B, EE10); 
+T = and(BW, not(imreconstruct(T, BW))); 
 figure
-imshow(B)
+imshow(T)
 
-EE12 = strel('disk', 5, 8); 
-B = and(B, not(imopen(B, EE12))); 
+
+EE30 = strel('line', 13, 90); 
+W = imopen(T, EE30); 
 figure
-imshow(B); 
+imshow(T)
 
-B = imreconstruct(B, BW); 
+EE31 = strel('line', 13, 0); 
+D = imopen(T, EE31); 
 figure
-imshow(B)
-%}
+imshow(D)
 
 
+T = and(D, W); 
+figure
+imshow(T)
+
+EE32 = strel('square', 3); 
+T = imopen(T, EE32); 
+figure
+imshow(T)
+
+EE33 = strel('line', 6, 45); 
+D = imopen(T, EE33); 
+figure
+imshow(D)
+
+T = imreconstruct(T, BW); 
+D = imreconstruct(D, BW); 
+T = and(T, not(D)); 
+figure
+imshow(T)
 
 
+EE34 = strel('square', 50); 
+T = imclose(T, EE34); 
+figure
+imshow(T)
 
-%%
-%{
+EE35 = strel('square', 10); 
+D = imopen(T, EE35); 
+figure
+imshow(D)
+
+T = imreconstruct(T, BW); 
+D = imreconstruct(D, BW); 
+T = and(T, not(D)); 
+figure
+imshow(T)
+
+EE36 = strel('square', 70); 
+D = imclose(T, EE36); 
+figure
+imshow(D)
+
+EE37 = strel('line', 20, 0);
+D = imopen(D, EE37); 
+figure
+imshow(D)
+
+T = and(T, D); 
+figure
+imshow(T)
+
+T = imreconstruct(T, BW); 
+figure
+imshow(T)
+
+
+FINAL = or(A, F); 
+FINAL = or(FINAL, T); 
+figure
+imshow(FINAL)
+
+
 IMG = imread('24486978.bmp');
 IMG(:,:,1) = IMG(:,:,1) .* uint8(not(FINAL));
 IMG(:,:,3) = IMG(:,:,3).* uint8(not(FINAL));
@@ -270,4 +282,3 @@ IMG(:,:,2) = IMG(:,:,2) + uint8(FINAL)*255;
 
 figure
 imshow(IMG);
-%}
