@@ -58,8 +58,10 @@ end
 %}
 
 
+%% Triangles grans
+
 % 55 graus
-%{
+
 EE5 = strel('line', 22, 53); 
 B = imopen(BW, EE5); 
 %figure
@@ -98,7 +100,7 @@ imshow(B);
 B = imreconstruct(B, BW); 
 figure
 imshow(B)
-%}
+
 
 
 % 125 graus
@@ -123,7 +125,7 @@ D = and(D, not(imopen(D, EE17)));
 %figure
 %imshow(D); 
 
-EE19 = strel('line', 22, 125); 
+EE19 = strel('line', 23, 125); 
 D = imopen(D, EE19); 
 figure
 imshow(D);
@@ -133,20 +135,58 @@ D = imclose(D, EE20);
 figure
 imshow(D)
 
-EE22 = strel('disk', 5, 8); 
+EE22 = strel('disk', 1, 8); 
 D = and(D, not(imopen(D, EE22))); 
 figure
 imshow(D); 
 
+%% interseccio 55 i 120 graus
 
 D= imreconstruct(D, BW); 
 figure
 imshow(D)
-%%F = and(B, D); 
+F = and(B, D); 
 
-%%figure
-%%imshow(F)
+figure
+imshow(F)
 
+%% eliminar espuris pels triangles grans
+
+EE25 = strel('square', 40); 
+F = imclose(F, EE25); 
+figure
+imshow(F)
+
+EE26 = strel('square', 21); 
+F = and(F, not(imopen(F, EE26))); 
+figure
+imshow(F)
+
+EE27 = strel('rectangle', [40, 5]); 
+F = and(F, not(imopen(F, EE27))); 
+figure
+imshow(F)
+
+EE28 = strel('rectangle', [38, 5]); 
+D = imopen(F, EE28); 
+figure
+imshow(D)
+
+EE29 = strel('rectangle', [10, 28]); 
+F = imopen(F, EE29); 
+figure
+imshow(F)
+
+F = or(F, D); 
+figure
+imshow(F)
+
+F = imreconstruct(F, BW); 
+figure
+imshow(F)
+
+
+%% els triangles petits
 
 
 

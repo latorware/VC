@@ -181,8 +181,14 @@ F = or(F, D);
 figure
 imshow(F)
 
+F = imreconstruct(F, BW); 
+figure
+imshow(F)
 
 
+%% els triangles petits
+
+EE30 = strel('line', )
 
 
 
