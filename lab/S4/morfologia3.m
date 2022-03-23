@@ -1,4 +1,4 @@
-I = rgb2gray(imread('cel_x2.jpg)); 
+I = rgb2gray(imread('cel_x2.jpg')); 
 % h = imhist(I); 
 % plot(h); 
 BW = I < 180;
