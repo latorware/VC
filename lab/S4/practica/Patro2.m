@@ -25,16 +25,34 @@ figure
 imshow(A)
     
         % Eliminar petits espuris
-      
-EE2 = strel('diamond', 16); 
-A = and(A, not(imopen(A, EE2))); 
-figure
-imshow(A)
+        EE2 = strel('diamond', 16); 
+        A = and(A, not(imopen(A, EE2))); 
+        figure
+        imshow(A)
+        A = imopen(A, EE); 
+        figure
+        imshow(A)
+        
+        EE3 = strel('square', 16);
+        %A = imopen(A, EE3); 
+        A = and(A, not(imopen(A, EE3))); 
+        figure
+        imshow(A)
+        EE4 = strel('diamond', 10); 
+        A = imopen(A, EE4); 
+        figure
+        imshow(A)
+        
+        figure
+        imshow(imreconstruct(A, BW))
 
-%EE3= strel('line', 35, 90); 
-%A = and(A, not(imopen(A, EE3))); 
-%figure
-%imshow(A)
+% triangles
+
+EE5 = strel('line', 30, 40); 
+B = imopen(BW, EE5); 
+figure
+imshow(B)
+
 
 
 %%

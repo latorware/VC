@@ -25,14 +25,22 @@ figure
 imshow(A)
     
         % Eliminar petits espuris
-      
 EE2 = strel('diamond', 16); 
-A = and(A, not(imopen(BW, EE2))); 
+A = and(A, not(imopen(A, EE2))); 
+figure
+imshow(A)
+A = imopen(A, EE); 
 figure
 imshow(A)
 
-EE3= strel('line', 10, 0); 
+A = ime(A, EE); 
+figure
+imshow(A)
 
+
+%A = and(A, not(imopen(A, EE3))); 
+%figure
+%imshow(A)
 
 
 %%
