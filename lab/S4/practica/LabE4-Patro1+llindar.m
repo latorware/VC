@@ -17,13 +17,13 @@ imshow(BW);
 %% Marges
 EE = strel('line', 30, 45);
 OI = imerode(BW,EE);
-EE2 = strel('square', 10);
+EE2 = strel('square', 5);
 OI2 = imerode(OI,EE2);
 
 
 EE = strel('line', 30, 135);
 OI4 = imerode(BW,EE);
-EE2 = strel('square', 10);
+EE2 = strel('square', 5);
 OI3 = imerode(OI4,EE2);
 
 MIX = or(OI2,OI3);

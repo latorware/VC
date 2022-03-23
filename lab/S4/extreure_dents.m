@@ -1,8 +1,9 @@
 % extreure dents
-i = rgb2gray(imread('wheel.bmp')); 
-BW = I < 20; 
+I = rgb2gray(imread('wheel.bmp')); 
+%BW = I < 20; 
+BW = imbinarize(I); 
 BW = imfill(BW, 'holes'); 
-EE = steel('disk', 8); 
+EE = strel('circle', 8); 
 EI = imerode(BW, EE); 
 DI = imdilate(BW, EE); 
 OI = imopen(BW, EE); 
