@@ -58,6 +58,8 @@ end
 %}
 
 
+%% Triangles grans
+
 % 55 graus
 
 EE5 = strel('line', 22, 53); 
@@ -138,6 +140,7 @@ D = and(D, not(imopen(D, EE22)));
 figure
 imshow(D); 
 
+%% interseccio 55 i 120 graus
 
 D= imreconstruct(D, BW); 
 figure
@@ -147,9 +150,34 @@ F = and(B, D);
 figure
 imshow(F)
 
+%% eliminar espuris pels triangles grans
 
 EE25 = strel('square', 40); 
 F = imclose(F, EE25); 
+figure
+imshow(F)
+
+EE26 = strel('square', 21); 
+F = and(F, not(imopen(F, EE26))); 
+figure
+imshow(F)
+
+EE27 = strel('rectangle', [40, 5]); 
+F = and(F, not(imopen(F, EE27))); 
+figure
+imshow(F)
+
+EE28 = strel('rectangle', [38, 5]); 
+D = imopen(F, EE28); 
+figure
+imshow(D)
+
+EE29 = strel('rectangle', [10, 28]); 
+F = imopen(F, EE29); 
+figure
+imshow(F)
+
+F = or(F, D); 
 figure
 imshow(F)
 
