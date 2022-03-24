@@ -205,75 +205,75 @@ T = and(BW, not(imreconstruct(T, BW)));
 
 EE30 = strel('line', 13, 90); 
 W = imopen(T, EE30); 
-figure
-imshow(W)
+%figure
+%imshow(W)
 
 EE31 = strel('line', 13, 0); 
 D = imopen(T, EE31); 
-figure
-imshow(D)
+%figure
+%imshow(D)
 
 
 T = and(D, W); 
-figure
-imshow(T)
+%figure
+%imshow(T)
 
 EE32 = strel('square', 3); 
 T = imopen(T, EE32); 
-figure
-imshow(T)
+%figure
+%imshow(T)
 
 EE33 = strel('line', 6, 45); 
 D = imopen(T, EE33); 
-figure
-imshow(D)
+%figure
+%imshow(D)
 
 T = imreconstruct(T, BW); 
 D = imreconstruct(D, BW); 
 T = and(T, not(D)); 
-figure
-imshow(T)
+%figure
+%imshow(T)
 
-%{
+
 EE34 = strel('square', 50); 
 T = imclose(T, EE34); 
-figure
-imshow(T)
+%figure
+%imshow(T)
 
 EE35 = strel('square', 10); 
 D = imopen(T, EE35); 
-figure
-imshow(D)
+%figure
+%imshow(D)
 
 T = imreconstruct(T, BW); 
 D = imreconstruct(D, BW); 
 T = and(T, not(D)); 
-figure
-imshow(T)
+%figure
+%imshow(T)
 
 EE36 = strel('square', 70); 
 D = imclose(T, EE36); 
-figure
-imshow(D)
+%figure
+%imshow(D)
 
 EE37 = strel('line', 20, 0);
 D = imopen(D, EE37); 
-figure
-imshow(D)
+%figure
+%imshow(D)
 
 T = and(T, D); 
-figure
-imshow(T)
+%figure
+%imshow(T)
 
 T = imreconstruct(T, BW); 
-figure
-imshow(T)
+%figure
+%imshow(T)
 
 
 FINAL = or(A, F); 
 FINAL = or(FINAL, T); 
-figure
-imshow(FINAL)
+%figure
+%imshow(FINAL)
 
 
 IMG = imread('24486978.bmp');
@@ -283,4 +283,3 @@ IMG(:,:,2) = IMG(:,:,2) + uint8(FINAL)*255;
 
 figure
 imshow(IMG);
-    %}
