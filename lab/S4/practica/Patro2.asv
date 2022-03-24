@@ -83,120 +83,119 @@ B = imclose(B, EE10);
 
 EE12 = strel('disk', 5, 8); 
 B = and(B, not(imopen(B, EE12))); 
-%figure
-%imshow(B); 
+figure
+imshow(B); 
 
 B = imreconstruct(B, BW); 
-%figure
-%imshow(B)
-
+figure
+imshow(B)
+%{
 
 
 % 125 graus
 
 EE15 = strel('line', 22, 125); 
 D = imopen(BW, EE15); 
-%figure
-%imshow(D)
+figure
+imshow(D)
 
 EE16 = strel('square', 10); 
 D = imclose(D, EE16); 
-%figure
-%imshow(D)
+figure
+imshow(D)
 
 EE18 = strel('disk', 5, 8); 
 D = imclose(D, EE18); 
-%figure
-%imshow(D)
+figure
+imshow(D)
 
 EE17 = strel('square', 5); 
 D = and(D, not(imopen(D, EE17))); 
-%figure
-%imshow(D); 
+figure
+imshow(D); 
 
 EE19 = strel('line', 23, 125); 
 D = imopen(D, EE19); 
-%figure
-%imshow(D);
+figure
+imshow(D);
 
 EE20 = strel('square', 30); 
 D = imclose(D, EE20); 
-%figure
-%imshow(D)
+figure
+imshow(D)
 
 EE22 = strel('disk', 1, 8); 
 D = and(D, not(imopen(D, EE22))); 
-%figure
-%imshow(D); 
+figure
+imshow(D); 
 
 %% interseccio 55 i 120 graus
 
 D= imreconstruct(D, BW); 
-%figure
-%imshow(D)
+figure
+imshow(D)
 F = and(B, D); 
 
-%figure
-%imshow(F)
+figure
+imshow(F)
 
 %% eliminar espuris pels triangles grans
 
 EE25 = strel('square', 40); 
 F = imclose(F, EE25); 
-%figure
-%imshow(F)
+figure
+imshow(F)
 
 EE26 = strel('square', 21); 
 F = and(F, not(imopen(F, EE26))); 
-%figure
-%imshow(F)
+figure
+imshow(F)
 
 EE27 = strel('rectangle', [40, 5]); 
 F = and(F, not(imopen(F, EE27))); 
-%figure
-%imshow(F)
-
+figure
+imshow(F)
 
 EE28 = strel('rectangle', [38, 5]); 
 D = imopen(F, EE28); 
-%figure
-%imshow(D)
+figure
+imshow(D)
 
 EE29 = strel('rectangle', [10, 28]); 
 F = imopen(F, EE29); 
-%figure
-%imshow(F)
+figure
+imshow(F)
 
 F = or(F, D); 
-%figure
-%imshow(F)
+figure
+imshow(F)
 
 F = imreconstruct(F, BW); 
-%figure
-%imshow(F)
+figure
+imshow(F)
 
 
 %% els triangles petits
 
 EE31 = strel('disk', 6, 8); 
 W = imopen(BW, EE31); 
-%figure
-%imshow(W)
+figure
+imshow(W)
 
 EE31 = strel('square', 10); 
 E = imopen(BW, EE31); 
-%figure
-%imshow(E)
+figure
+imshow(E)
 
 EE31 = strel('diamond', 6); 
 R = imopen(BW, EE31); 
-%figure
-%imshow(R)
+figure
+imshow(R)
 
 T = or(W, E); 
 T = or(T, R); 
-%figure
-%imshow(T)
+figure
+imshow(T)
 
 T = and(BW, not(imreconstruct(T, BW))); 
 figure
@@ -206,7 +205,7 @@ imshow(T)
 EE30 = strel('line', 13, 90); 
 W = imopen(T, EE30); 
 figure
-imshow(W)
+imshow(T)
 
 EE31 = strel('line', 13, 0); 
 D = imopen(T, EE31); 
@@ -217,7 +216,7 @@ imshow(D)
 T = and(D, W); 
 figure
 imshow(T)
-%{
+
 EE32 = strel('square', 3); 
 T = imopen(T, EE32); 
 figure
