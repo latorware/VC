@@ -63,4 +63,70 @@ figure
 imshow(imgTransformed,[]);
 
 
-%%
+%% Binarització local
+    %%Primer fem tophat per millorar il·luminació
+h = imhist(imgTransformed);
+figure
+plot(h);
+
+ha = cumsum(h);
+figure
+plot(ha);
+
+    %%inversio per tophat
+imgTransformed = 255 - imgTransformed; 
+figure
+imshow(imgTransformed); 
+
+se = strel('disk',25);
+imgTransformedfiltered = imtophat(imgTransformed,se);
+figure
+imshow(imgTransformedfiltered)
+
+    %%tornem a inversio
+imgTransformedfiltered = 255 - imgTransformedfiltered; 
+figure
+imshow(imgTransformedfiltered); 
+
+    %%binaritzacio prova 1
+%%binLocal1 = blkproc(imgTransformedfiltered, [1, 1], [25, 70], @myfun, 10); 
+%%figure
+%%imshow(binLocal1); 
+
+    %%binaritzacio prova 2
+%binLocal2 = blkproc(imgTransformedfiltered, [1, 1], [25, 70], @myfun, 40); 
+%figure
+%imshow(binLocal2); 
+
+    %%binaritzacio prova 3
+%binLocal3 = blkproc(imgTransformedfiltered, [1, 1], [25, 70], @myfun, 100); 
+%figure
+%imshow(binLocal3); 
+
+    %%binaritzacio prova 4
+%binLocal4 = blkproc(imgTransformedfiltered, [1, 1], [25, 70], @myfun, 60); 
+%figure
+%imshow(binLocal4); 
+
+    %%binaritzacio prova 5
+binLocal5 = blkproc(imgTransformedfiltered, [1, 1], [25, 70], @myfun, 50); 
+figure
+imshow(binLocal5); 
+
+%nombre components
+labeledImage = bwconncomp(binLocal5); 
+labeledImage.NumObjects
+
+% el vermell
+measurements = regionprops(labeledImage,'BoundingBox');
+for k = 1 : length(measurements)
+    bb = measurements(k).BoundingBox;
+    rectangle('Position', [bb(1),bb(2),bb(3),bb(4)],'EdgeColor','red','LineWidth',1 );
+end
+
+%% eliminar imperfeccions no necessari (a mes que fa que desapareguin simbols)
+%se = strel('disk',2);
+%T = imopen(binLocal5, se);
+%binLocal5 = imreconstruct(T, binLocal5); 
+%figure
+%imshow(binLocal5)
