@@ -78,6 +78,7 @@ imgTransformed = 255 - imgTransformed;
 figure
 imshow(imgTransformed); 
 
+%el top-hat
 se = strel('disk',25);
 imgTransformedfiltered = imtophat(imgTransformed,se);
 figure
@@ -89,9 +90,9 @@ figure
 imshow(imgTransformedfiltered); 
 
     %%binaritzacio prova 1
-%%binLocal1 = blkproc(imgTransformedfiltered, [1, 1], [25, 70], @myfun, 10); 
-%%figure
-%%imshow(binLocal1); 
+%binLocal1 = blkproc(imgTransformedfiltered, [1, 1], [25, 70], @myfun, 10); 
+%figure
+%imshow(binLocal1); 
 
     %%binaritzacio prova 2
 %binLocal2 = blkproc(imgTransformedfiltered, [1, 1], [25, 70], @myfun, 40); 
@@ -123,6 +124,9 @@ for k = 1 : length(measurements)
     bb = measurements(k).BoundingBox;
     rectangle('Position', [bb(1),bb(2),bb(3),bb(4)],'EdgeColor','red','LineWidth',1 );
 end
+
+figure
+imshow(binLocal5)
 
 %% eliminar imperfeccions no necessari (a mes que fa que desapareguin simbols)
 %se = strel('disk',2);
