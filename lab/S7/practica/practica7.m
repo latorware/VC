@@ -319,3 +319,10 @@ M = imopen(M, se);
 figure
 imshow(M); 
 
+
+%{
+se = strel('disk',50);
+M = imclose(M, se); 
+figure
+imshow(M); 
+%}
