@@ -11,15 +11,15 @@ HangleY = sin(Hradians);
 S = HSV(:,:,2);
 V = HSV(:,:,3);
 [sizeH, sizeS, sizeV] = size(HSV);
-k = 15; 
+k = 10; 
+%k = 15; 
+%K = 20; 
 O = double([HangleX(:) HangleY(:) S(:) V(:)]); 
-C = kmeans(O, k); 
+[C, L] = kmeans(O, k); 
 S = reshape(C, sizeH, sizeS); 
-%figure
-%L = labeloverlay(I, S); 
 figure
-L = label2rgb(S); 
-imshow(L)
+LL = label2rgb(S); 
+imshow(LL)
 
 MASK = false(sizeH, sizeS); 
 MASK(rect(2):(rect(2) + rect(4)), rect(1):(rect(1) + rect(3))) = true; 
