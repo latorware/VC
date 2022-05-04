@@ -21,7 +21,20 @@ figure
 L = label2rgb(S); 
 imshow(L)
 
-MASK = zeros(sizeH, sizeS); 
-MASK(rect(2):(rect(2) + rect(4)), rect(1):(rect(1) + rect(3))) = 1; 
+MASK = false(sizeH, sizeS); 
+MASK(rect(2):(rect(2) + rect(4)), rect(1):(rect(1) + rect(3))) = true; 
 figure
 imshow(MASK)
+H = [C, MASK(:)];
+
+H0 = zeros(k, 1); %caigut a dins
+H1 = zeros(k, 1); %caigut a fora
+for i = 1:(sizeH*sizeS)
+    if (H(i, 2) == 1)
+        H0(H(i, 1)) = H0(H(i, 1)) +1; 
+    else
+        H1(H(i, 1)) = H1(H(i, 1)) +1; 
+    end
+end
+
+
