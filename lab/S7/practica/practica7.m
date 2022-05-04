@@ -1,9 +1,9 @@
 
 %% O NOMES TE HSV
 %{
-I = imread('yellowFrogSmall.jpg'); 
+%I = imread('yellowFrogSmall.jpg'); 
 %I = imread('yellowFrog.jpg'); 
-%I = imread('car.jpg');
+I = imread('car.jpg');
 figure
 imshow(I); 
 rect = getrect;
@@ -64,9 +64,9 @@ imshow(M);
 
 %% O NOMES TE RGB
 %{
-I = imread('yellowFrogSmall.jpg'); 
+%I = imread('yellowFrogSmall.jpg'); 
 %I = imread('yellowFrog.jpg'); 
-%I = imread('car.jpg');
+I = imread('car.jpg');
 figure
 imshow(I); 
 rect = getrect;
@@ -126,9 +126,9 @@ imshow(M);
 
 %% O TE HSV MENYS EL V
 %{
-I = imread('yellowFrogSmall.jpg'); 
+%I = imread('yellowFrogSmall.jpg'); 
 %I = imread('yellowFrog.jpg'); 
-%I = imread('car.jpg');
+I = imread('car.jpg');
 figure
 imshow(I); 
 rect = getrect;
@@ -188,9 +188,9 @@ imshow(M);
 
 %% O TE Cielab
 %{
-I = imread('yellowFrogSmall.jpg'); 
+%I = imread('yellowFrogSmall.jpg'); 
 %I = imread('yellowFrog.jpg'); 
-%I = imread('car.jpg');
+I = imread('car.jpg');
 figure
 imshow(I); 
 rect = getrect;
@@ -248,9 +248,10 @@ imshow(M);
 %}
 
 %% O TE HSV I TAMBE RGB I TAMBE EL CIELAB
-I = imread('yellowFrogsmall.jpg'); 
+
+%I = imread('yellowFrogsmall.jpg'); 
 %I = imread('yellowFrog.jpg'); 
-%I = imread('car.jpg');
+I = imread('car.jpg');
 
 figure
 imshow(I); 
