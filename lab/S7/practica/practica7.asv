@@ -27,7 +27,21 @@ figure
 imshow(MASK)
 H = [C, MASK(:)];
 
-H1 = zeros(k); 
-H2 = zeros(k); 
+H0 = zeros(k, 1); %caigut a dins
+H1 = zeros(k, 1); %caigut a fora
 for i = 1:(sizeH*sizeS)
-    if H
+    if (H(i, 2) == 1)
+        H0(H(i, 1)) = H0(H(i, 1)) +1; 
+    else
+        H1(H(i, 1)) = H1(H(i, 1)) +1; 
+    end
+end
+
+RES = H0 > H1;  %1 si hi ha mes el color a dins
+
+M = false(sizeH, sizeS); 
+for i = 1:sizeH
+    for j = 1:sizeS
+        
+
+

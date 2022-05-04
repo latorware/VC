@@ -37,4 +37,18 @@ for i = 1:(sizeH*sizeS)
     end
 end
 
+RES = H0 > H1;  %1 si hi ha mes el color a dins
+
+M = false(sizeH, sizeS); 
+for i = 1:sizeH
+    for j = 1:sizeS
+        if (RES(S(i, j)))
+            M(i,j) = true; 
+        end
+    end
+end
+%Resultat brut
+figure
+imshow(M); 
+
 
