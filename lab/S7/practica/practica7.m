@@ -1,5 +1,5 @@
 % a partir de matlab 2022, imsegkmeans
-I = imread('yellowFrog.jpg'); 
+I = imread('yellowFrogSmall.jpg'); 
 figure
 imshow(I); 
 rect = getrect;
@@ -11,8 +11,7 @@ HangleY = sin(Hradians);
 S = HSV(:,:,2);
 V = HSV(:,:,3);
 [sizeH, sizeS, sizeV] = size(HSV);
-%k = 15;
-k = 50; 
+k = 15; 
 O = double([HangleX(:) HangleY(:) S(:) V(:)]); 
 C = kmeans(O, k); 
 S = reshape(C, sizeH, sizeS); 
@@ -21,5 +20,8 @@ S = reshape(C, sizeH, sizeS);
 figure
 L = label2rgb(S); 
 imshow(L)
+
 MASK = zeros(sizeH, sizeS); 
-MASK = MASK(rect); 
+MASK(rect(2):(rect(2) + rect(4)), rect(1):(rect(1) + rect(3))) = 1; 
+figure
+imshow(MASK)
