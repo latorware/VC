@@ -1,9 +1,9 @@
 
 %% O NOMES TE HSV
 %{
-%I = imread('yellowFrogSmall.jpg'); 
+I = imread('yellowFrogSmall.jpg'); 
 %I = imread('yellowFrog.jpg'); 
-I = imread('car.jpg');
+%I = imread('car.jpg');
 figure
 imshow(I); 
 rect = getrect;
@@ -120,9 +120,9 @@ se = strel('disk',2);
 M = imopen(M, se); 
 figure
 imshow(M); 
+
+
 %}
-
-
 
 %% O TE HSV MENYS EL V
 %{
@@ -320,9 +320,11 @@ figure
 imshow(M); 
 
 
-%{
+
+
 se = strel('disk',50);
 M = imclose(M, se); 
 figure
 imshow(M); 
-%}
+
+
