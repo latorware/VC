@@ -318,3 +318,4 @@ se = strel('disk',2);
 M = imopen(M, se); 
 figure
 imshow(M); 
+
