@@ -7,7 +7,7 @@ S = imread('sheeps.jpg');
 figure
 imshow(S); 
 Im = rgb2gray(S); 
-figure
+figureS
 imshow(Im); 
 r = getrect
 I = Im(r(2):r(2)+r(4), r(1):r(1)+r(3)); 
