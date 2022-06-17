@@ -27,7 +27,7 @@ w = round((N-step)/2); %round(r(3)/2 - step/2);
 
 
 blk = [h,w];
-R = blkproc(Im, [step step], blk, @mycompareimage, D);
+    
 R = imresize(R,size(Im));
 B = imoverlay(S,R,'y');
 figure

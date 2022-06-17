@@ -1,4 +1,4 @@
-%{
+
 %% PROVA AMB IMATGE AMPLIADA
 i = rgb2gray(imread('joc_de_caracters.jpg')); 
 figure
@@ -61,7 +61,7 @@ L = cell2mat(label);
 sum(N == L)  %Quantes son igual
 figure
 confusionchart(N, L); 
-%}
+
 
 %{
 %% PROVA AMB IMATGE DEFORMADA 1
@@ -768,7 +768,7 @@ confusionchart(N, L);
 %}
 
 
-
+%{
 
 %% PROVA MATRICULA 2 (amb entrenament de la normal, ampliada i les deformades)
 i = rgb2gray(imread('joc_de_caracters.jpg')); 
@@ -919,7 +919,7 @@ figure
 confusionchart(N, L); 
 
 
-
+%}
 
 %app classification learner
 %{
